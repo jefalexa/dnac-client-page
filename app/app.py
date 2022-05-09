@@ -5,10 +5,8 @@ import dnac
 app = Flask(__name__)
 
 # Testing Paramaters
-use_static_data = True
+use_static_data = False
 use_static_client_id = True
-entity_type = 'mac_address'
-entity_value = '1C:6A:7A:E0:6F:27'
 
 
 @app.route('/')
@@ -28,6 +26,8 @@ def portal():
                 client_details_list_display = json.load(file)
         else:
             if use_static_client_id:
+                entity_type = 'mac_address'
+                entity_value = '1C:6A:7A:E0:6F:27'
                 client_details_list_display = dnac.get_client_details_display(entity_type, entity_value)
             else:
                 entity_type = 'network_user_id'

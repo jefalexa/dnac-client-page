@@ -22,6 +22,5 @@ https://flask.palletsprojects.com/en/2.1.x/quickstart/
 
 
 ## Example
-
 ![User Input Form](Client_Portal_Input.png "User Input Form")
 ![Query Results](Client_Portal_Results.png "Query Results")
