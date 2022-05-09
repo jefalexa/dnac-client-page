@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Clients For User:  {{userid}}{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  {% for client in data %}
+    <h3>{{client['client_name']}}</h3>
+
+    <h4>Current Status</h4>
+    <table>
+      <tr><td>id</td><td>{{client['client_current_state']['id']}}</td></tr>
+      <tr><td>connectionStatus</td><td>{{client['client_current_state']['connectionStatus']}}</td></tr>
+      <tr><td>hostType</td><td>{{client['client_current_state']['hostType']}}</td></tr>
+      <tr><td>userId</td><td>{{client['client_current_state']['userId']}}</td></tr>
+      <tr><td>hostName</td><td>{{client['client_current_state']['hostName']}}</td></tr>
+      <tr><td>hostOs</td><td>{{client['client_current_state']['hostOs']}}</td></tr>
+      <tr><td>healthScore</td><td>{{client['client_current_state']['healthScore']}}</td></tr>
+      <tr><td>hostMac</td><td>{{client['client_current_state']['hostMac']}}</td></tr>
+      <tr><td>hostIpV4</td><td>{{client['client_current_state']['hostIpV4']}}</td></tr>
+      <tr><td>authType</td><td>{{client['client_current_state']['authType']}}</td></tr>
+      <tr><td>vlanId</td><td>{{client['client_current_state']['vlanId']}}</td></tr>
+      <tr><td>ssid</td><td>{{client['client_current_state']['ssid']}}</td></tr>
+      <tr><td>location</td><td>{{client['client_current_state']['location']}}</td></tr>
+      <tr><td>onboardingTime</td><td>{{client['client_current_state']['onboardingTime']}}</td></tr>
+    </table>
+
+
+    <h4>Historical Metrics</h4>
+    <table>
+      <th>Timestamp</th>
+      <th>Avg RSSI</th>
+      <th>Avg SNR</th>
+      <th>Data Rate</th>
+      <th>txBytes</th>
+      <th>rxBytes</th>
+      <th>txLinkError</th>
+      <th>rxLinkError</th>
+    {% for x in client['client_historical_list'] %}
+      <tr>
+        <td>{{x['Timestamp']}}</td>
+        <td>{{x['avgRssi']}}</td>
+        <td>{{x['avgSnr']}}</td>
+        <td>{{x['dataRate']}}</td>
+        <td>{{x['txBytes']}}</td>
+        <td>{{x['rxBytes']}}</td>
+        <td>{{x['txLinkError']}}</td>
+        <td>{{x['rxLinkError']}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  
+
+  {% endfor %}
+{% endblock %}
