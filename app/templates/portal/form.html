@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Input Form{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<form action="/client" method = "POST">
+    <p>User ID:  <input type = "text" name = "userid" /></p>
+    <p><input type = "submit" value = "Submit" /></p>
+</form>
+
+{% endblock %}
