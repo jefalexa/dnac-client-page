@@ -1,6 +1,5 @@
 import json
-import datetime as dt
-from flask import (Flask, flash, g, redirect, render_template, request, url_for)
+from flask import (Flask, redirect, render_template, request, url_for)
 import dnac
 
 app = Flask(__name__)
@@ -24,7 +23,6 @@ def portal():
     if request.method == 'POST':
         form_data = request.form
         userid = form_data['userid']
-        # Get Data
         if use_static_data:
             with open('client_data_static_display.json', 'r') as file: 
                 client_details_list_display = json.load(file)
